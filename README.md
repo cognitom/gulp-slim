@@ -5,11 +5,9 @@ Plugin to compile Slim templates for piping with [gulp](https://github.com/weare
 
 ## Install
 
-This plugin has not been published in npm yet. 
-
 ```bash
 gem install slim
-npm install git://github.com/cognitom/gulp-slim.git --save-dev
+npm install gulp-slim --save-dev
 ```
 
 
@@ -42,5 +40,7 @@ gulp.task 'slim', ->
 
 ## Changelog
 
-v0.0.1 - Initial Release
+v0.0.1 - Initial release
+v0.0.2 - Add some tests
+v0.0.3 - Register to npm
 
