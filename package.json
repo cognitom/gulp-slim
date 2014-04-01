@@ -1,7 +1,7 @@
 {
   "name": "gulp-slim",
   "description": "slim plugin for gulp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/cognitom/gulp-slim",
   "repository": {
     "type": "git",
@@ -24,8 +24,11 @@
     "gulp-util": "*"
   },
   "devDependencies": {
+    "should": "*",
+    "mocha": "*"
   },
   "scripts": {
+    "test": "node_modules/.bin/mocha --compilers coffee:coffee-script --require coffee-script/register -R spec"
   },
   "engines": {
     "node": ">= 0.4.0"
