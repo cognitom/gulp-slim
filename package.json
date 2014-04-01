@@ -1,7 +1,7 @@
 {
   "name": "gulp-slim",
   "description": "slim plugin for gulp",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/cognitom/gulp-slim",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
     "name": "Tsutomu Kawamura",
     "url": "http://librize.com/"
   },
-  "main": "./index.coffee",
+  "main": "./index.js",
   "keywords": [
     "gulpplugin",
     "slim",
@@ -25,7 +25,9 @@
   },
   "devDependencies": {
     "should": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "gulp": "*",
+    "gulp-coffee": "*"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha --compilers coffee:coffee-script --require coffee-script/register -R spec"
