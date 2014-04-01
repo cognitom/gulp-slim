@@ -1,6 +1,6 @@
 # gulp-slim [![Build Status](https://travis-ci.org/cognitom/gulp-slim.svg?branch=master)](https://travis-ci.org/cognitom/gulp-slim)
 
-Plugin to compile Slim templates for piping with [gulp](https://github.com/wearefractal/gulp). Uses [Slim](http://slim-lang.com/).
+A [Slim](http://slim-lang.com/) plugin for [gulp](https://github.com/wearefractal/gulp).
 
 
 ## Install
@@ -32,15 +32,18 @@ slim = require 'slim'
 
 gulp.task 'slim', ->
   gulp.src './src/slim/*.slim'
-  .pipe slim
-    pretty: true
+  .pipe slim pretty: true
   .pipe gulp.dest './dist/html/'
 ```
 
 
-## Changelog
+## Options
 
-v0.0.1 - Initial release
-v0.0.2 - Add some tests
-v0.0.3 - Register to npm
+The options are the same as what's supported by `slimrb`.
 
+- `pretty: true`
+- `erb: true`
+- `compile: true`
+- `rails: true`
+- `translator: true`
+- `logicLess: true`
