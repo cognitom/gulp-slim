@@ -1,0 +1,38 @@
+{
+  "name": "gulp-slim",
+  "description": "slim plugin for gulp",
+  "version": "0.0.1",
+  "homepage": "https://github.com/cognitom/gulp-slim",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cognitom/gulp-slim.git"
+  },
+  "author": {
+    "name": "Tsutomu Kawamura",
+    "url": "http://librize.com/"
+  },
+  "main": "./index.coffee",
+  "keywords": [
+    "gulpplugin",
+    "slim",
+    "slim-lang",
+    "template"
+  ],
+  "dependencies": {
+    "coffee-script": "*",
+    "through2": "*",
+    "gulp-util": "*"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
