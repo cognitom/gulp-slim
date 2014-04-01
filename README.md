@@ -1,4 +1,4 @@
-# gulp-slim
+# gulp-slim [![Build Status](https://travis-ci.org/cognitom/gulp-slim.svg?branch=master)](https://travis-ci.org/cognitom/gulp-slim)
 
 Plugin to compile Slim templates for piping with [gulp](https://github.com/wearefractal/gulp). Uses [Slim](http://slim-lang.com/).
 
