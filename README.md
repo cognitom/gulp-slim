@@ -14,7 +14,8 @@ npm install gulp-slim --save-dev
 ## Usage
 
 ```javascript
-var slim = require("slim");
+var gulp = require("gulp");
+var slim = require("gulp-slim");
 
 gulp.task('slim', function(){
   gulp.src("./src/slim/*.slim")
@@ -28,7 +29,8 @@ gulp.task('slim', function(){
 or write it in CoffeeScript.
 
 ```coffeescript
-slim = require 'slim'
+gulp = requier 'gulp'
+slim = require 'gulp-slim'
 
 gulp.task 'slim', ->
   gulp.src './src/slim/*.slim'
