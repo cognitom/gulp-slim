@@ -49,3 +49,5 @@ The options are the same as what's supported by `slimrb`.
 - `rails: true`
 - `translator: true`
 - `logicLess: true`
+
+Set `bundler: true` to invoke `slimrb` via bundler.

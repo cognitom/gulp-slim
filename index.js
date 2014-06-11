@@ -16,6 +16,10 @@
     }
     cmnd = 'slimrb';
     args = [];
+    if (options.bundler) {
+      cmnd = 'bundle';
+      args = ['exec', 'slimrb'];
+    }
     args.push('-s');
     if (options.pretty) {
       args.push('-p');

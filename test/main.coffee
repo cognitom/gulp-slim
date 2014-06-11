@@ -1,7 +1,7 @@
 should = require 'should'
 slim = require '../'
 gutil = require 'gulp-util'
-fs = require 'fs' 
+fs = require 'fs'
 path = require 'path'
 
 createFile = (slimFileName, contents) ->
@@ -24,7 +24,7 @@ describe 'gulp-slim', () ->
         data.should.equal emptyFile
         done()
       stream.write emptyFile
-    
+
     it 'should emit error when file isStream()', (done) ->
       stream = slim()
       streamFile =
@@ -34,10 +34,10 @@ describe 'gulp-slim', () ->
         err.message.should.equal 'Streaming not supported'
         done()
       stream.write streamFile
-    
+
     it 'should compile single slim file', (done) ->
       slimFile = createFile 'test.slim'
-    
+
       stream = slim()
       stream.on 'data', (htmlFile) ->
         should.exist htmlFile
@@ -48,10 +48,10 @@ describe 'gulp-slim', () ->
         String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test.html'), 'utf8'
         done()
       stream.write slimFile
-    
+
     it 'should compile single slim file with pretty option', (done) ->
       slimFile = createFile 'test.slim'
-    
+
       stream = slim pretty:true
       stream.on 'data', (htmlFile) ->
         should.exist htmlFile
@@ -62,3 +62,5 @@ describe 'gulp-slim', () ->
         String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test-pretty.html'), 'utf8'
         done()
       stream.write slimFile
+
+    it 'should invoke slimrb via bundler with bundler option'
