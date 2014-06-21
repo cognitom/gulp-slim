@@ -51,3 +51,17 @@ The options are the same as what's supported by `slimrb`.
 - `logicLess: true`
 
 Set `bundler: true` to invoke `slimrb` via bundler.
+
+You can also add [custom options](https://github.com/slim-template/slim/blob/master/README.md#available-options) with ```options``` key. Value can be ```string``` or ```array```.
+
+```javascript
+slim({
+  pretty: true,
+  options: 'attr_quote="\'"'
+})
+
+slim({
+  pretty: true,
+  options: ['attr_quote="\'"', 'js_wrapper=:cdata']
+})
+```

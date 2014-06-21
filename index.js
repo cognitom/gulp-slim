@@ -39,6 +39,17 @@
     if (options.logicLess) {
       args.push('-l');
     }
+    if (options.options) {
+      if (options.options.constructor === Array) {
+        options.options.forEach(function(opt) {
+          args.push("-o");
+          return args.push(opt);
+        });
+      } else if (options.options.constructor === String) {
+        args.push('-o');
+        args.push(options.options);
+      }
+    }
     return through.obj(function(file, encoding, callback) {
       var b, ext, program;
       if (file.isNull()) {
