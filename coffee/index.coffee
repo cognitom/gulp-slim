@@ -22,6 +22,15 @@ module.exports = (options = {}) ->
   args.push '-t' if options.translator
   args.push '-l' if options.logicLess
 
+  if options.options
+    if options.options.constructor is Array
+      options.options.forEach (opt) ->
+        args.push "-o"
+        args.push opt
+    else if options.options.constructor is String
+      args.push '-o'
+      args.push options.options
+
   through.obj (file, encoding, callback) ->
 
     if file.isNull()

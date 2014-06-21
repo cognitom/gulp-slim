@@ -37,7 +37,6 @@ describe 'gulp-slim', () ->
 
     it 'should compile single slim file', (done) ->
       slimFile = createFile 'test.slim'
-
       stream = slim()
       stream.on 'data', (htmlFile) ->
         should.exist htmlFile
@@ -51,7 +50,6 @@ describe 'gulp-slim', () ->
 
     it 'should compile single slim file with pretty option', (done) ->
       slimFile = createFile 'test.slim'
-
       stream = slim pretty:true
       stream.on 'data', (htmlFile) ->
         should.exist htmlFile
@@ -63,4 +61,28 @@ describe 'gulp-slim', () ->
         done()
       stream.write slimFile
 
-    it 'should invoke slimrb via bundler with bundler option'
+    it 'should compile single slim file with one custom option', (done) ->
+      slimFile = createFile 'test.slim'
+      stream = slim options: 'attr_quote="\'"'
+      stream.on 'data', (htmlFile) ->
+        should.exist htmlFile
+        should.exist htmlFile.path
+        should.exist htmlFile.relative
+        should.exist htmlFile.contents
+        htmlFile.path.should.equal path.join __dirname, 'fixtures', 'test.html'
+        String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test-single-quotes.html'), 'utf8'
+        done()
+      stream.write slimFile
+
+    it 'should compile single slim file with two custom options', (done) ->
+      slimFile = createFile 'test.slim'
+      stream = slim options: ['attr_quote="\'"', 'js_wrapper=:cdata']
+      stream.on 'data', (htmlFile) ->
+        should.exist htmlFile
+        should.exist htmlFile.path
+        should.exist htmlFile.relative
+        should.exist htmlFile.contents
+        htmlFile.path.should.equal path.join __dirname, 'fixtures', 'test.html'
+        String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test-single-quotes-cdata.html'), 'utf8'
+        done()
+      stream.write slimFile
