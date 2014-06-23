@@ -27,7 +27,8 @@
     "should": "*",
     "mocha": "*",
     "gulp": "*",
-    "gulp-coffee": "*"
+    "gulp-coffee": "*",
+    "win-spawn": "^2.0.0"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha --compilers coffee:coffee-script --require coffee-script/register -R spec"

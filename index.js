@@ -1,7 +1,7 @@
 (function() {
   var PLUGIN_NAME, gutil, spawn, through;
 
-  spawn = require('child_process').spawn;
+  spawn = require('win-spawn');
 
   through = require('through2');
 
