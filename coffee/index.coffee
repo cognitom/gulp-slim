@@ -1,4 +1,4 @@
-{spawn} = require 'child_process'
+spawn = require 'win-spawn'
 through  = require 'through2'
 gutil = require 'gulp-util'
 
