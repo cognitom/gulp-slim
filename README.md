@@ -65,3 +65,39 @@ slim({
   options: ['attr_quote="\'"', 'js_wrapper=:cdata']
 })
 ```
+
+
+## Some Scenarios
+
+### With AngularJS
+
+If you want to compile such a source.
+
+```slim
+doctype html
+html ng-app="app" 
+  head
+  body ng-controller="YourController as ctrl"
+    p {{ desc }}
+    p
+      | {{ something }}
+      a ng-href="https://github.com/{{ user }}"
+
+```
+
+You need to specify a `attr_delims`.
+
+```javascript
+var gulp = require("gulp");
+var slim = require("gulp-slim");
+
+gulp.task('slim', function(){
+  gulp.src("./src/slim/*.slim")
+    .pipe(slim({
+      pretty: true,
+      options: "attr_delims={'(' => ')', '[' => ']'}"
+    }))
+    .pipe(gulp.dest("./dist/html/"));
+});
+```
+
