@@ -101,3 +101,22 @@ gulp.task('slim', function(){
 });
 ```
 
+
+### With Another Encoding
+
+For example, if `slimrb`'s default is `US-ASCII` but you want to compile a source in `utf-8`, then use `encoding` option.
+
+```javascript
+var gulp = require("gulp");
+var slim = require("gulp-slim");
+
+gulp.task('slim', function(){
+  gulp.src("./src/slim/*.slim")
+    .pipe(slim({
+      pretty: true,
+      options: "encoding='utf-8'"
+    }))
+    .pipe(gulp.dest("./dist/html/"));
+});
+
+```
