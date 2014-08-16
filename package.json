@@ -1,7 +1,7 @@
 {
   "name": "gulp-slim",
   "description": "slim plugin for gulp",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "homepage": "https://github.com/cognitom/gulp-slim",
   "repository": {
     "type": "git",
@@ -11,6 +11,9 @@
     "name": "Tsutomu Kawamura",
     "url": "http://librize.com/"
   },
+  "contributors": [
+    "Chang Wang (https://github.com/cheapsteak)"
+  ],
   "main": "./index.js",
   "keywords": [
     "gulpplugin",
