@@ -1,4 +1,4 @@
-spawn = require 'win-spawn'
+spawn = require('spawn-cmd').spawn
 through  = require 'through2'
 gutil = require 'gulp-util'
 
