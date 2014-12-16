@@ -51,7 +51,7 @@
       }
     }
     return through.obj(function(file, encoding, callback) {
-      var b, ext, program;
+      var b, eb, ext, original_file_path, program;
       if (file.isNull()) {
         this.push(file);
         return callback();
@@ -60,10 +60,12 @@
         this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
         return callback();
       }
+      original_file_path = file.path;
       ext = options.erb ? '.erb' : '.html';
       file.path = gutil.replaceExtension(file.path, ext);
       program = spawn(cmnd, args);
       b = new Buffer(0);
+      eb = new Buffer(0);
       program.stdout.on('readable', (function(_this) {
         return function() {
           var chunk, _results;
@@ -79,6 +81,24 @@
           file.contents = b;
           _this.push(file);
           return callback();
+        };
+      })(this));
+      program.stderr.on('readable', (function(_this) {
+        return function() {
+          var chunk, _results;
+          _results = [];
+          while (chunk = program.stderr.read()) {
+            _results.push(eb = Buffer.concat([eb, chunk], eb.length + chunk.length));
+          }
+          return _results;
+        };
+      })(this));
+      program.stderr.on('end', (function(_this) {
+        return function() {
+          if (eb.length > 0) {
+            console.log("Slim error in file (" + original_file_path + "):\n" + eb);
+            return process.exit(1);
+          }
         };
       })(this));
       return program.stdin.write(file.contents, (function(_this) {
