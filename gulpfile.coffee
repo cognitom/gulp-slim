@@ -1,6 +1,6 @@
 gulp   = require 'gulp'
 coffee = require 'gulp-coffee'
-slim   = require './'
+slim   = require './coffee/'
 
 gulp.task 'coffee', ->
   gulp.src './coffee/index.coffee'
