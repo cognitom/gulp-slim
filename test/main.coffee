@@ -1,5 +1,5 @@
 should = require 'should'
-slim = require '../'
+slim = require '../coffee/'
 gutil = require 'gulp-util'
 fs = require 'fs'
 path = require 'path'
