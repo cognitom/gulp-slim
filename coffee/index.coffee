@@ -19,7 +19,7 @@ module.exports = (options = {}) ->
   args.push '-p' if options.pretty
   args.push '-e' if options.erb
   args.push '-c' if options.compile
-  args.push '-r' if options.rails
+  args.push '--rails' if options.rails
   args.push '-t' if options.translator
   args.push '-l' if options.logicLess
 
