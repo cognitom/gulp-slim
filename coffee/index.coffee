@@ -29,6 +29,10 @@ module.exports = (options = {}) ->
     args.push '-r'
     args.push 'slim/logic_less'
 
+  if options.data
+    args.push '--locals'
+    args.push JSON.stringify options.data
+
   if options.options
     if options.options.constructor is Array
       options.options.forEach (opt) ->
