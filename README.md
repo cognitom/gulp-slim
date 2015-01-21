@@ -85,7 +85,7 @@ html ng-app="app"
 
 ```
 
-You need to specify a `attr_delims`.
+You need to specify a `attr_list_delims`. (or `attr_delims` if you use slimrb previous to 2.1.0)
 
 ```javascript
 var gulp = require("gulp");
@@ -95,7 +95,7 @@ gulp.task('slim', function(){
   gulp.src("./src/slim/*.slim")
     .pipe(slim({
       pretty: true,
-      options: "attr_delims={'(' => ')', '[' => ']'}"
+      options: "attr_list_delims={'(' => ')', '[' => ']'}"
     }))
     .pipe(gulp.dest("./dist/html/"));
 });
