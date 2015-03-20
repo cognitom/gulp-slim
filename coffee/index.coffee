@@ -23,6 +23,15 @@ module.exports = (options = {}) ->
   args.push '-t' if options.translator
   args.push '-l' if options.logicLess
 
+  if options.require
+    if options.require.constructor is Array
+      options.require.forEach (lib) ->
+        args.push '-r'
+        args.push lib
+    else if options.require.constructor is String
+        args.push '-r'
+        args.push options.require
+
   if options.options
     if options.options.constructor is Array
       options.options.forEach (opt) ->
