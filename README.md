@@ -164,3 +164,19 @@ slim({
   }
 })
 ```
+
+## Changelog
+
+### 0.1.0
+
+Special thanks to [@dmke](https://github.com/dmke) !! See [here](https://github.com/cognitom/gulp-slim/issues/20).
+
+- add `data` option to inject data into the template
+
+### 0.0.11
+
+- add logging of errors and fail if a compile error happens with slimrb
+
+### 0.0.8
+
+- support Windows
