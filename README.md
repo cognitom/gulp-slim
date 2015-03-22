@@ -52,6 +52,18 @@ The options are the same as what's supported by `slimrb`.
 
 Set `bundler: true` to invoke `slimrb` via bundler.
 
+You can require one of the [plug-ins](https://github.com/slim-template/slim/blob/master/README.md#plugins) available with Slim with the ```require``` key. Value can be ```string``` or ```array```.
+```javascript
+slim({
+  require: 'slim/include'
+})
+
+slim({
+  require: ['slim/include', 'slim/logic_less']
+})
+```
+Note that when using slim/include you will likely need to use the 'include_dirs' option (as outlined below).  See the tests on how to configure include directories with the [inclulde partials plugin](https://github.com/slim-template/slim/blob/master/doc/include.md).
+
 You can also add [custom options](https://github.com/slim-template/slim/blob/master/README.md#available-options) with ```options``` key. Value can be ```string``` or ```array```.
 
 ```javascript
