@@ -46,8 +46,6 @@ describe 'gulp-slim', () ->
         htmlFile.path.should.equal path.join __dirname, 'fixtures', 'test.html'
         String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test.html'), 'utf8'
         done()
-      stream.on 'error', (err)->
-        done()
       stream.write slimFile
 
     it 'should compile single slim file with pretty option', (done) ->
@@ -60,8 +58,6 @@ describe 'gulp-slim', () ->
         should.exist htmlFile.contents
         htmlFile.path.should.equal path.join __dirname, 'fixtures', 'test.html'
         String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test-pretty.html'), 'utf8'
-        done()
-      stream.on 'error', (err)->
         done()
       stream.write slimFile
 
@@ -76,8 +72,6 @@ describe 'gulp-slim', () ->
         htmlFile.path.should.equal path.join __dirname, 'fixtures', 'test.html'
         String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test-single-quotes.html'), 'utf8'
         done()
-      stream.on 'error', (err)->
-        done()
       stream.write slimFile
 
     it 'should compile single slim file with two custom options', (done) ->
@@ -91,11 +85,9 @@ describe 'gulp-slim', () ->
         htmlFile.path.should.equal path.join __dirname, 'fixtures', 'test.html'
         String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test-single-quotes-cdata.html'), 'utf8'
         done()
-      stream.on 'error', (err)->
-        done()
       stream.write slimFile
 
-    it 'should compile single slim file with data option', (done)->
+    it 'should compile single slim file with data option', (done) ->
       slimFile = createFile 'data.slim'
       stream = slim
         data:
@@ -108,7 +100,5 @@ describe 'gulp-slim', () ->
         should.exist htmlFile.contents
         htmlFile.path.should.equal path.join __dirname, 'fixtures', 'data.html'
         String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/data.html'), 'utf8'
-        done()
-      stream.on 'error', (err)->
         done()
       stream.write slimFile
