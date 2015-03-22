@@ -34,7 +34,7 @@
     "gulp-coffee": "*"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha --compilers coffee:coffee-script --require coffee-script/register -R spec"
+    "test": "node_modules/.bin/mocha --compilers coffee:coffee-script/register -R spec"
   },
   "engines": {
     "node": ">= 0.4.0"

@@ -20,8 +20,18 @@ module.exports = (options = {}) ->
   args.push '-e' if options.erb
   args.push '-c' if options.compile
   args.push '--rails' if options.rails
-  args.push '-t' if options.translator
-  args.push '-l' if options.logicLess
+  
+  if options.translator
+    args.push '-r'
+    args.push 'slim/translator'
+  
+  if options.logicLess
+    args.push '-r'
+    args.push 'slim/logic_less'
+
+  if options.data
+    args.push '--locals'
+    args.push JSON.stringify options.data
 
   if options.options
     if options.options.constructor is Array
