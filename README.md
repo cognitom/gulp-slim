@@ -56,13 +56,14 @@ You can require one of the [plug-ins](https://github.com/slim-template/slim/blob
 ```javascript
 slim({
   require: 'slim/include'
+  options: 'include_dirs=[".", "common/includes", "./includes"]'
 })
 
 slim({
   require: ['slim/include', 'slim/logic_less']
 })
 ```
-Note that when using slim/include you will likely need to use the 'include_dirs' option (as outlined below).  See the tests on how to configure include directories with the [inclulde partials plugin](https://github.com/slim-template/slim/blob/master/doc/include.md).
+Note that when using slim/include you will likely need to use the 'include_dirs' option (as outlined above).  See the tests on how to configure include directories with the [inclulde partials plugin](https://github.com/slim-template/slim/blob/master/doc/include.md).
 
 You can also add [custom options](https://github.com/slim-template/slim/blob/master/README.md#available-options) with ```options``` key. Value can be ```string``` or ```array```.
 
