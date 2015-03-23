@@ -52,6 +52,8 @@ The options are the same as what's supported by `slimrb`.
 
 Set `bundler: true` to invoke `slimrb` via bundler.
 
+Set `chdir: true` to invoke `slimrb` in the same directory as the file currently being processed (for including files in the same directory).
+
 You can require one of the [plug-ins](https://github.com/slim-template/slim/blob/master/README.md#plugins) available with Slim with the ```require``` key. Value can be ```string``` or ```array```.
 ```javascript
 slim({

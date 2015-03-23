@@ -1,6 +1,7 @@
 spawn       = require('spawn-cmd').spawn
 through     = require 'through2'
 gutil       = require 'gulp-util'
+path        = require 'path'
 PluginError = gutil.PluginError
 
 PLUGIN_NAME = 'gulp-slim'
@@ -54,7 +55,10 @@ module.exports = (options = {}) ->
     ext = if options.erb then '.erb' else '.html'
     file.path = gutil.replaceExtension file.path, ext
 
-    program = spawn cmnd, args
+    programOpts = {}
+    programOpts.cwd = path.dirname(file.path) if options.chdir
+
+    program = spawn cmnd, args, programOpts
 
     # create buffer
     b = new Buffer 0
