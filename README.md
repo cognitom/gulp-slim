@@ -2,14 +2,26 @@
 
 A [Slim](http://slim-lang.com/) plugin for [gulp](https://github.com/wearefractal/gulp).
 
-
 ## Install
 
+We need Slim in version 3.0.2 or greater. If you don't have Slim installed,
+please install Ruby (and RubyGems) first and run
+
 ```bash
-gem install slim
-npm install gulp-slim --save-dev
+gem install slim -v '>= 3.0.2'
 ```
 
+If you already have Slim installed, make sure you are using the latest version:
+
+```bash
+gem update slim
+```
+
+Finally, install `gulp-slim`:
+
+```bash
+npm install gulp-slim --save-dev
+```
 
 ## Usage
 
@@ -90,7 +102,7 @@ If you want to compile such a source.
 
 ```slim
 doctype html
-html ng-app="app" 
+html ng-app="app"
   head
   body ng-controller="YourController as ctrl"
     p {{ desc }}
@@ -135,3 +147,51 @@ gulp.task('slim', function(){
 });
 
 ```
+
+### Passing Data into the Template
+
+Suppose you have the following template:
+
+```slim
+doctype html
+html
+  head
+    title = title
+  body
+    h1 = title
+    ul
+      - for u in users
+        li = u.name
+```
+
+You can fill in the variables by passing a plain old JavaScript object
+as `data` option into the `slim` plugin:
+
+```javascript
+slim({
+  data: {
+    title: "Just a list of usernames",
+    users: [
+      { name: "Fred" },
+      { name: "Bill" },
+      { name: "Harry" }
+    ]
+  }
+})
+```
+
+## Changelog
+
+### 0.1.0
+
+Special thanks to [@dmke](https://github.com/dmke) !! See [here](https://github.com/cognitom/gulp-slim/issues/20).
+
+- add `data` option to inject data into the template
+
+### 0.0.11
+
+- add logging of errors and fail if a compile error happens with slimrb
+
+### 0.0.8
+
+- support Windows

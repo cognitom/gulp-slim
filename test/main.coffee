@@ -87,6 +87,22 @@ describe 'gulp-slim', () ->
         done()
       stream.write slimFile
 
+    it 'should compile single slim file with data option', (done) ->
+      slimFile = createFile 'data.slim'
+      stream = slim
+        data:
+          name: 'Testsuite'
+          list: [1,2,3]
+      stream.on 'data', (htmlFile)->
+        should.exist htmlFile
+        should.exist htmlFile.path
+        should.exist htmlFile.relative
+        should.exist htmlFile.contents
+        htmlFile.path.should.equal path.join __dirname, 'fixtures', 'data.html'
+        String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/data.html'), 'utf8'
+        done()
+      stream.write slimFile
+
     it 'should compile include a slim file when include library is requried', (done) ->
       slimFile = createFile 'test_include.slim'
       stream = slim require: 'slim/include', options: 'include_dirs=[".", "test/fixtures", "test/fixtures/includes"]'
