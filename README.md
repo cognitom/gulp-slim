@@ -77,6 +77,19 @@ slim({
   options: ['attr_quote="\'"', 'js_wrapper=:cdata']
 })
 ```
+You can also add any other console options for custom slimrb run options. For example:
+
+```javascript
+slim({
+	prerry: true,
+	environment: {
+		cwd: process.cwd(),
+        env: {
+        	"LC_CTYPE":"ru_RU.UTF-8"
+        }
+	}
+})
+```
 
 
 ## Some Scenarios
