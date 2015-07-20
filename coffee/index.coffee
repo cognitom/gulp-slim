@@ -30,6 +30,10 @@ module.exports = (options = {}) ->
     args.push '-r'
     args.push 'slim/logic_less'
 
+  if options.include
+    args.push '-r'
+    args.push 'slim/include'
+
   if options.data
     args.push '--locals'
     args.push JSON.stringify options.data
