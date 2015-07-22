@@ -87,12 +87,12 @@ You can also add any other console options for custom slimrb run options. For ex
 
 ```javascript
 slim({
-	prerry: true,
-	environment: {
-		cwd: process.cwd(),
-        env: {
-        	"LC_CTYPE":"ru_RU.UTF-8"
-        }
+  prerry: true,
+    environment: {
+      cwd: process.cwd(),
+      env: {
+        'LC_CTYPE':'ru_RU.UTF-8'
+      }
 	}
 })
 ```
