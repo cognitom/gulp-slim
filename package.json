@@ -1,7 +1,7 @@
 {
   "name": "gulp-slim",
   "description": "slim plugin for gulp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/cognitom/gulp-slim",
   "repository": {
     "type": "git",
@@ -13,7 +13,8 @@
   },
   "contributors": [
     "Chang Wang (https://github.com/cheapsteak)",
-    "Dominik Menke (https://github.com/dmke)"
+    "Dominik Menke (https://github.com/dmke)",
+    "yozzh (https://github.com/yozzh)"
   ],
   "main": "./index.js",
   "keywords": [
@@ -23,19 +24,20 @@
     "template"
   ],
   "dependencies": {
-    "coffee-script": "^1.9.1",
-    "gulp-util": "^3.0.4",
+    "coffee-script": "^1.9.3",
+    "gulp-util": "^3.0.6",
     "spawn-cmd": "0.0.2",
-    "through2": "^0.6.3"
+    "through2": "^0.6.5"
   },
   "devDependencies": {
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.0",
     "gulp-coffee": "^2.3.1",
-    "mocha": "^2.2.1",
-    "should": "^5.2.0"
+    "mocha": "^2.2.5",
+    "should": "^7.0.4"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha --compilers coffee:coffee-script/register -R spec"
+    "test": "node_modules/.bin/mocha --compilers coffee:coffee-script/register -R spec",
+    "prepublish": "gulp coffee"
   },
   "engines": {
     "node": ">= 0.10.0"
