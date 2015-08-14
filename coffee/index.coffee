@@ -11,6 +11,7 @@ module.exports = (options = {}) ->
   # build a command with arguments
   cmnd = 'slimrb'
   args = []
+  spawn_options = {}
 
   if options.bundler
     cmnd = 'bundle'
@@ -29,6 +30,10 @@ module.exports = (options = {}) ->
   if options.logicLess
     args.push '-r'
     args.push 'slim/logic_less'
+
+  if options.include
+    args.push '-r'
+    args.push 'slim/include'
 
   if options.data
     args.push '--locals'
@@ -52,6 +57,8 @@ module.exports = (options = {}) ->
       args.push '-o'
       args.push options.options
 
+  spawn_options.env = options.environment if options.environment
+
   through.obj (file, encoding, callback) ->
 
     if file.isNull()
@@ -65,10 +72,9 @@ module.exports = (options = {}) ->
     ext = if options.erb then '.erb' else '.html'
     file.path = gutil.replaceExtension file.path, ext
 
-    programOpts = {}
-    programOpts.cwd = path.dirname(file.path) if options.chdir
+    spawn_options.cwd = path.dirname(file.path) if options.chdir
 
-    program = spawn cmnd, args, programOpts
+    program = spawn cmnd, args, spawn_options
 
     # create buffer
     b = new Buffer 0

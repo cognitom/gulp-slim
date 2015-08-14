@@ -61,6 +61,7 @@ The options are the same as what's supported by `slimrb`.
 - `rails: true`
 - `translator: true`
 - `logicLess: true`
+- `include: true`
 
 Set `bundler: true` to invoke `slimrb` via bundler.
 
@@ -90,6 +91,24 @@ slim({
 slim({
   pretty: true,
   options: ['attr_quote="\'"', 'js_wrapper=:cdata']
+})
+
+slim({
+  include: true,
+  options: 'include_dirs="[\'test/fixtures\']"'
+})
+```
+You can also add any other console options for custom slimrb run options. For example:
+
+```javascript
+slim({
+  prerry: true,
+    environment: {
+      cwd: process.cwd(),
+      env: {
+        'LC_CTYPE':'ru_RU.UTF-8'
+      }
+	}
 })
 ```
 

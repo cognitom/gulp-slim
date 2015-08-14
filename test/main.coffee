@@ -128,3 +128,20 @@ describe 'gulp-slim', () ->
         String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test_include.html'), 'utf8'
         done()
       stream.write slimFile
+      
+    it 'should include additional file with include plugin', (done) ->
+      slimFile = createFile 'include.slim'
+      stream = slim {
+        pretty:true
+        include: true
+        options: ["include_dirs=['test/fixtures']"]
+      }
+      stream.on 'data', (htmlFile) ->
+        should.exist htmlFile
+        should.exist htmlFile.path
+        should.exist htmlFile.relative
+        should.exist htmlFile.contents
+        htmlFile.path.should.equal path.join __dirname, 'fixtures', 'include.html'
+        String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/include.html'), 'utf8'
+        done()
+      stream.write slimFile
