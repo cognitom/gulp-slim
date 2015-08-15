@@ -103,12 +103,38 @@ describe 'gulp-slim', () ->
         done()
       stream.write slimFile
 
+    it 'should compile include a slim file when include library is requried', (done) ->
+      slimFile = createFile 'test_include.slim'
+      stream = slim require: 'slim/include', options: 'include_dirs=[".", "test/fixtures", "test/fixtures/includes"]'
+      stream.on 'data', (htmlFile) ->
+        should.exist htmlFile
+        should.exist htmlFile.path
+        should.exist htmlFile.relative
+        should.exist htmlFile.contents
+        htmlFile.path.should.equal path.join __dirname, 'fixtures', 'test_include.html'
+        String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test_include.html'), 'utf8'
+        done()
+      stream.write slimFile
+
+    it 'should compile a slim file when included file is in same directory', (done) ->
+      slimFile = createFile 'test_include.slim'
+      stream = slim require: 'slim/include', chdir: true
+      stream.on 'data', (htmlFile) ->
+        should.exist htmlFile
+        should.exist htmlFile.path
+        should.exist htmlFile.relative
+        should.exist htmlFile.contents
+        htmlFile.path.should.equal path.join __dirname, 'fixtures', 'test_include.html'
+        String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test_include.html'), 'utf8'
+        done()
+      stream.write slimFile
+      
     it 'should include additional file with include plugin', (done) ->
       slimFile = createFile 'include.slim'
       stream = slim {
         pretty:true
         include: true
-        options: ["include_dirs=['test/fixtures']"]
+        options: "include_dirs=['.', 'test/fixtures']"
       }
       stream.on 'data', (htmlFile) ->
         should.exist htmlFile

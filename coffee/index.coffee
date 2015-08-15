@@ -1,6 +1,7 @@
 spawn       = require('spawn-cmd').spawn
 through     = require 'through2'
 gutil       = require 'gulp-util'
+path        = require 'path'
 PluginError = gutil.PluginError
 
 PLUGIN_NAME = 'gulp-slim'
@@ -38,6 +39,15 @@ module.exports = (options = {}) ->
     args.push '--locals'
     args.push JSON.stringify options.data
 
+  if options.require
+    if options.require.constructor is Array
+      options.require.forEach (lib) ->
+        args.push '-r'
+        args.push lib
+    else if options.require.constructor is String
+        args.push '-r'
+        args.push options.require
+
   if options.options
     if options.options.constructor is Array
       options.options.forEach (opt) ->
@@ -61,6 +71,8 @@ module.exports = (options = {}) ->
     original_file_path = file.path
     ext = if options.erb then '.erb' else '.html'
     file.path = gutil.replaceExtension file.path, ext
+
+    spawn_options.cwd = path.dirname(file.path) if options.chdir
 
     program = spawn cmnd, args, spawn_options
 

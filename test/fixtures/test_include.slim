@@ -4,15 +4,14 @@ html
     title Slim Examples
     meta name="keywords" content="template language"
     meta name="author" content="John Doe"
-    javascript:
-      alert('Slim supports embedded javascript!')
 
   body
     h1 Markup examples
+    include ./include_me
 
     #content
       p This example shows you how a basic Slim file looks like.
-      include ./include-file
+      include ./includes/another_include_file
 
     div id="footer"
-      Copyright &copy; 2014
+      Copyright © 2014
