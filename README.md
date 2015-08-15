@@ -201,6 +201,14 @@ slim({
 
 ## Changelog
 
+### 0.3.0
+
+- add support slim require [#26](https://github.com/cognitom/gulp-slim/issues/26)
+
+### 0.2.0
+
+- add environment option for spawn process [#33](https://github.com/cognitom/gulp-slim/issues/33)
+
 ### 0.1.0
 
 Special thanks to [@dmke](https://github.com/dmke) !! See [here](https://github.com/cognitom/gulp-slim/issues/20).

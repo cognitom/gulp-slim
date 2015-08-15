@@ -1,7 +1,7 @@
 {
   "name": "gulp-slim",
   "description": "slim plugin for gulp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/cognitom/gulp-slim",
   "repository": {
     "type": "git",
