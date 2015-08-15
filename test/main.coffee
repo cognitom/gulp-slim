@@ -116,7 +116,7 @@ describe 'gulp-slim', () ->
         done()
       stream.write slimFile
 
-    it 'should compile a slim file when include library is in same directory', (done) ->
+    it 'should compile a slim file when included file is in same directory', (done) ->
       slimFile = createFile 'test_include.slim'
       stream = slim require: 'slim/include', chdir: true
       stream.on 'data', (htmlFile) ->
@@ -134,7 +134,7 @@ describe 'gulp-slim', () ->
       stream = slim {
         pretty:true
         include: true
-        options: ["include_dirs=['test/fixtures']"]
+        options: "include_dirs=['.', 'test/fixtures']"
       }
       stream.on 'data', (htmlFile) ->
         should.exist htmlFile
