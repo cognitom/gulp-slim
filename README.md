@@ -41,7 +41,7 @@ gulp.task('slim', function(){
 or write it in CoffeeScript.
 
 ```coffeescript
-gulp = requier 'gulp'
+gulp = require 'gulp'
 slim = require 'gulp-slim'
 
 gulp.task 'slim', ->
