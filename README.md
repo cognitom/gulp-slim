@@ -102,7 +102,7 @@ You can also add any other console options for custom slimrb run options. For ex
 
 ```javascript
 slim({
-  prerry: true,
+  pretty: true,
     environment: {
       cwd: process.cwd(),
       env: {
