@@ -1,8 +1,8 @@
 spawn       = require('spawn-cmd').spawn
 through     = require 'through2'
-gutil       = require 'gulp-util'
+replaceExt = require 'replace-ext'
 path        = require 'path'
-PluginError = gutil.PluginError
+PluginError = require 'plugin-error'
 
 PLUGIN_NAME = 'gulp-slim'
 
@@ -22,11 +22,11 @@ module.exports = (options = {}) ->
   args.push '-e' if options.erb
   args.push '-c' if options.compile
   args.push '--rails' if options.rails
-  
+
   if options.translator
     args.push '-r'
     args.push 'slim/translator'
-  
+
   if options.logicLess
     args.push '-r'
     args.push 'slim/logic_less'
@@ -70,7 +70,7 @@ module.exports = (options = {}) ->
     # relace the extension
     original_file_path = file.path
     ext = if options.erb then '.erb' else '.html'
-    file.path = gutil.replaceExtension file.path, ext
+    file.path = replaceExt file.path, ext
 
     spawn_options.cwd = path.dirname(file.path) if options.chdir
 
