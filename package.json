@@ -28,7 +28,8 @@
     "replace-ext": "^2.0.0",
     "plugin-error": "^1.0.1",
     "spawn-cmd": "0.0.2",
-    "through2": "^0.6.5"
+    "through2": "^0.6.5",
+    "vinyl": "^2.2.0"
   },
   "devDependencies": {
     "gulp": "4.0.2",

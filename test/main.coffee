@@ -1,6 +1,6 @@
 should = require 'should'
 slim = require '../coffee/'
-gutil = require 'gulp-util'
+Vinyl = require 'vinyl'
 fs = require 'fs'
 path = require 'path'
 
@@ -8,7 +8,7 @@ createFile = (slimFileName, contents) ->
   base = path.join __dirname, 'fixtures'
   filePath = path.join base, slimFileName
 
-  new gutil.File
+  new Vinyl
     cwd: __dirname
     base: base
     path: filePath
@@ -128,7 +128,7 @@ describe 'gulp-slim', () ->
         String(htmlFile.contents).should.equal fs.readFileSync path.join(__dirname, 'expect/test_include.html'), 'utf8'
         done()
       stream.write slimFile
-      
+
     it 'should include additional file with include plugin', (done) ->
       slimFile = createFile 'include.slim'
       stream = slim {
